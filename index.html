@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -196,10 +196,10 @@
     document.body.appendChild(countdownContainer);
 
     // Target date: May 11th at 6:00 AM EST
-    const targetDate = new Date('2025-05-11T06:00:00-05:00').getTime(); // Using UTC offset for EST
+    const targetDate = new Date('2025-05-11T06:00:00-05:00'); // Target date in EST (UTC-5)
 
-    // Update the countdown every second
-    const countdownInterval = setInterval(function() {
+    // Function to update the countdown every second
+    function updateCountdown() {
       const now = new Date().getTime();
       const distance = targetDate - now;
 
@@ -216,7 +216,11 @@
         clearInterval(countdownInterval);
         countdownContainer.querySelector('.countdown').innerHTML = "The launch has arrived!";
       }
-    }, 1000);
+    }
+
+    // Update the countdown immediately and then every second
+    updateCountdown();
+    const countdownInterval = setInterval(updateCountdown, 1000);
 
     // QR Code for the Solana wallet
     const qrContainer = document.createElement('div');
@@ -247,6 +251,7 @@
   <img class="pope-image-bottom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg" alt="Pope Leo XIV" />
 </body>
 </html>
+
 
 
 
