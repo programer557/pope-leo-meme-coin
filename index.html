@@ -154,7 +154,7 @@
     document.querySelector('.content').appendChild(countdownElement);
 
     // Target date: May 11th at 6:00 AM EST
-    const targetDate = new Date('May 11, 2025 06:00:00 EST').getTime();
+    const targetDate = new Date('2025-05-11T06:00:00-05:00').getTime(); // Using UTC offset for EST
 
     // Update the countdown every second
     const countdownInterval = setInterval(function() {
