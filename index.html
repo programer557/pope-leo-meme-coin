@@ -89,10 +89,25 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .countdown {
-      font-size: 2rem;
+    .countdown-container {
+      position: fixed;
+      top: 20%;
+      right: 2%;
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
       color: #ffd700;
-      margin-top: 1.5rem;
+      font-size: 2rem;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .countdown {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #ffd700;
+      text-shadow: 0 0 10px #ffd700, 0 0 20px #ff8c00;
     }
 
     .coin {
@@ -149,9 +164,10 @@
     }
 
     // Countdown Logic
-    const countdownElement = document.createElement('div');
-    countdownElement.className = 'countdown';
-    document.querySelector('.content').appendChild(countdownElement);
+    const countdownContainer = document.createElement('div');
+    countdownContainer.className = 'countdown-container';
+    countdownContainer.innerHTML = '<div class="countdown">Loading...</div>';
+    document.body.appendChild(countdownContainer);
 
     // Target date: May 11th at 6:00 AM EST
     const targetDate = new Date('2025-05-11T06:00:00-05:00').getTime(); // Using UTC offset for EST
@@ -167,12 +183,12 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      countdownContainer.querySelector('.countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
       // If the countdown is over
       if (distance < 0) {
         clearInterval(countdownInterval);
-        countdownElement.innerHTML = "The launch has arrived!";
+        countdownContainer.querySelector('.countdown').innerHTML = "The launch has arrived!";
       }
     }, 1000);
   </script>
@@ -191,14 +207,12 @@
       <a href="#">Join the Community</a>
       <a href="#">Read the Whitepaper</a>
     </div>
-
-    <!-- Countdown Timer -->
-    <div class="countdown"></div>
   </div>
 
   <img class="pope-image-bottom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg" alt="Pope Leo XIV" />
 </body>
 </html>
+
 
 
 
