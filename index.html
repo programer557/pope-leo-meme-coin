@@ -6,6 +6,18 @@
   <title>Pope Leo XIV Meme Coin</title>
   <style>
     body {
+      position: relative;
+    }
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
@@ -22,9 +34,9 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg') center center no-repeat fixed;
+      background: url('/mnt/data/a6cb4e4d-6b74-4a68-b2ab-ee9ae4c92cd2.png') center center no-repeat fixed;
       background-size: cover;
-      opacity: 0.1;
+      opacity: 0.2;
       z-index: 0;
     }
     .content {
@@ -85,7 +97,25 @@
       animation: fall linear infinite;
       z-index: 0;
     }
-  </style>
+      @keyframes spark {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+    }
+    .spark {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: radial-gradient(circle, #ffd700, #ffa500);
+      border-radius: 50%;
+      animation: spark linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+    body::after {
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 20%, rgba(0, 0, 0, 0.8) 100%);
+      mix-blend-mode: screen;
+    }
+</style>
 </head>
 <body>
   <script>
@@ -97,7 +127,16 @@
       coin.style.animationDelay = Math.random() * 5 + 's';
       document.body.appendChild(coin);
     }
-  </script>
+    for (let i = 0; i < 60; i++) {
+      const spark = document.createElement('div');
+      spark.className = 'spark';
+      spark.style.left = Math.random() * 100 + 'vw';
+      spark.style.bottom = Math.random() * 50 + 'vh';
+      spark.style.animationDuration = (2 + Math.random() * 2) + 's';
+      spark.style.animationDelay = Math.random() * 4 + 's';
+      document.body.appendChild(spark);
+    }
+</script>
 
   <div class="content">
     <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">Official Meme Coin</h1>
