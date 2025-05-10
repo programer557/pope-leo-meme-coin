@@ -9,54 +9,96 @@
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f9f6f1;
+      background: url('https://www.transparenttextures.com/patterns/batthern.png') repeat, linear-gradient(to bottom, #fffbe6, #fff1cc);
       color: #333;
       text-align: center;
+      position: relative;
+      overflow-x: hidden;
     }
     header {
-      background: #fff2d8;
+      background: linear-gradient(90deg, #ffd700, #ffa500);
       padding: 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      color: white;
     }
     h1 {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 3rem;
+      text-shadow: 1px 1px 2px #00000033;
     }
     .tagline {
-      font-size: 1.2rem;
-      color: #888;
+      font-size: 1.3rem;
+      color: #fff8e1;
     }
     .content {
       padding: 2rem;
+      animation: fadeIn 1.5s ease;
+      position: relative;
+      z-index: 1;
     }
     img {
-      max-width: 200px;
+      max-width: 220px;
       border-radius: 1rem;
       margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .bio {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto 2rem;
-      font-size: 1rem;
-      line-height: 1.6;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #444;
     }
     .cta-buttons a {
       display: inline-block;
       margin: 0.5rem;
       padding: 0.75rem 1.5rem;
-      background: #ffd700;
-      color: #000;
+      background: linear-gradient(to right, #ffd700, #ffb800);
+      color: #111;
       text-decoration: none;
       font-weight: bold;
-      border-radius: 0.5rem;
-      transition: background 0.3s;
+      border-radius: 0.75rem;
+      transition: transform 0.3s, background 0.3s;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
     }
     .cta-buttons a:hover {
-      background: #ffcc00;
+      background: linear-gradient(to right, #ffcc00, #ffa500);
+      transform: scale(1.05);
     }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 0.6; }
+      50% { transform: translateY(-20px); opacity: 1; }
+      100% { transform: translateY(0); opacity: 0.6; }
+    }
+    .coin {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Coin_icon_gold.svg/1024px-Coin_icon_gold.svg.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: float 3s ease-in-out infinite;
+      z-index: 0;
+      opacity: 0.6;
+    }
+    .coin:nth-child(1) { left: 5%; top: 100px; animation-delay: 0s; }
+    .coin:nth-child(2) { left: 15%; top: 200px; animation-delay: 1s; }
+    .coin:nth-child(3) { left: 25%; top: 150px; animation-delay: 2s; }
+    .coin:nth-child(4) { right: 10%; top: 120px; animation-delay: 1.5s; }
+    .coin:nth-child(5) { right: 20%; top: 180px; animation-delay: 0.5s; }
   </style>
 </head>
 <body>
+  <div class="coin"></div>
+  <div class="coin"></div>
+  <div class="coin"></div>
+  <div class="coin"></div>
+  <div class="coin"></div>
+
   <header>
     <h1>Pope Leo XIV Meme Coin</h1>
     <p class="tagline">The most divine token on the blockchain</p>
