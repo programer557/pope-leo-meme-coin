@@ -9,8 +9,7 @@
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg') center center no-repeat fixed;
-      background-size: cover;
+      background: linear-gradient(135deg, #000000, #1a1a1a);
       color: #fff;
       text-align: center;
       position: relative;
@@ -23,7 +22,9 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.7);
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg') center center no-repeat fixed;
+      background-size: cover;
+      opacity: 0.1;
       z-index: 0;
     }
     .content {
@@ -36,30 +37,35 @@
       max-width: 220px;
       border-radius: 1rem;
       margin-bottom: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(255,215,0,0.5);
     }
     .bio {
       max-width: 700px;
       margin: 0 auto 2rem;
       font-size: 1.1rem;
       line-height: 1.7;
-      color: #fff;
+      color: #ffd700;
     }
     .cta-buttons a {
       display: inline-block;
       margin: 0.5rem;
       padding: 0.75rem 1.5rem;
-      background: linear-gradient(to right, #ffd700, #ffb800);
+      background: linear-gradient(to right, #ffd700, #ff8c00);
       color: #111;
       text-decoration: none;
       font-weight: bold;
       border-radius: 0.75rem;
-      transition: transform 0.3s, background 0.3s;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
     }
     .cta-buttons a:hover {
-      background: linear-gradient(to right, #ffcc00, #ffa500);
+      background: linear-gradient(to right, #ffa500, #ffcc00);
       transform: scale(1.05);
+      box-shadow: 0 0 16px rgba(255, 215, 0, 0.8);
+    }
+    h1, h2 {
+      color: #ffd700;
+      text-shadow: 0 0 10px #ffd700, 0 0 20px #ff8c00;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -94,6 +100,8 @@
   </script>
 
   <div class="content">
+    <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">Official Meme Coin</h1>
+    <h2 style="font-size: 2rem; margin-top: 0;">Pope Leo XIV</h2>
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg" alt="Pope Leo XIV" />
 
     <div class="bio">
@@ -109,4 +117,5 @@
   </div>
 </body>
 </html>
+
 
