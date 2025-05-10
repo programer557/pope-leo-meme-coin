@@ -140,6 +140,32 @@
       position: relative;
       animation: fadeIn 2s ease-in-out;
     }
+
+    .qr-container {
+      position: fixed;
+      top: 50%;
+      left: 2%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+      text-align: center;
+      z-index: 2;
+    }
+
+    .qr-container img {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 1rem;
+    }
+    
+    .qr-container p {
+      color: #ffd700;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
   </style>
 </head>
 <body>
@@ -191,6 +217,15 @@
         countdownContainer.querySelector('.countdown').innerHTML = "The launch has arrived!";
       }
     }, 1000);
+
+    // QR Code for the Solana wallet
+    const qrContainer = document.createElement('div');
+    qrContainer.className = 'qr-container';
+    qrContainer.innerHTML = `
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=solana:A7vVdkUuTfNW8AhKnkMqc58ipfUc2pdy5GFymvvdKdDA&size=150x150" alt="Solana Wallet QR Code" />
+      <p>Send Solana to this address</p>
+    `;
+    document.body.appendChild(qrContainer);
   </script>
 
   <div class="content">
@@ -212,7 +247,6 @@
   <img class="pope-image-bottom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg" alt="Pope Leo XIV" />
 </body>
 </html>
-
 
 
 
