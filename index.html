@@ -129,6 +129,20 @@
       position: relative;
       animation: fadeIn 2s ease-in-out;
     }
+
+    /* Fade-in effect for the QR Code */
+    .qr-code {
+      animation: fadeIn 2s ease-in-out;
+      margin-top: 2rem;
+    }
+
+    .thank-you-message {
+      font-size: 1.2rem;
+      color: #ffd700;
+      font-weight: bold;
+      margin-top: 20px;
+      display: none; /* Hidden initially */
+    }
   </style>
 </head>
 <body>
@@ -151,6 +165,13 @@
       spark.style.animationDelay = Math.random() * 4 + 's';
       document.body.appendChild(spark);
     }
+
+    // Show the thank you message when a user clicks "Buy Now"
+    document.getElementById("buy-now").addEventListener("click", function () {
+      setTimeout(function () {
+        document.getElementById("thank-you").style.display = "block";
+      }, 1000); // Delay for effect
+    });
   </script>
 
   <div class="content">
@@ -163,16 +184,31 @@
     </div>
 
     <div class="cta-buttons">
-  <a 
-    href="solana:A7vVdkUuTfNW8AhKnkMqc58ipfUc2pdy5GFymvvdKdDA?amount=0.5&label=Pope%20Leo%20XIV%20Meme%20Coin&message=Thank%20you%20for%20buying%20$POPE"
-    target="_blank"
-  >
-    Buy Now
-  </a>
-  <a href="#">Join the Community</a>
-  <a href="#">Read the Whitepaper</a>
-</div>
+      <a 
+        id="buy-now"
+        href="solana:A7vVdkUuTfNW8AhKnkMqc58ipfUc2pdy5GFymvvdKdDA?label=Pope%20Leo%20XIV%20Meme%20Coin&message=Thank%20you%20for%20buying%20$POPE"
+        target="_blank"
+      >
+        Buy Now
+      </a>
+      <a href="#">Join the Community</a>
+      <a href="#">Read the Whitepaper</a>
+    </div>
 
+    <!-- QR Code with fade-in effect -->
+    <div class="qr-code">
+      <p style="color: #ffd700; font-weight: bold;">Scan to Buy with SOL:</p>
+      <img 
+        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=solana:A7vVdkUuTfNW8AhKnkMqc58ipfUc2pdy5GFymvvdKdDA%3Flabel%3DPope%2520Leo%2520XIV%2520Meme%2520Coin%26message%3DThank%2520you%2520for%2520buying%2520%24POPE" 
+        alt="Solana Wallet QR Code" 
+        style="border-radius: 0.5rem; box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);"
+      />
+    </div>
+
+    <!-- Thank You message -->
+    <div id="thank-you" class="thank-you-message">
+      Thank you for your purchase! Your support means a lot to the Pope Leo XIV Meme Coin community!
+    </div>
   </div>
 
   <!-- Pope Leo image at bottom -->
@@ -180,6 +216,7 @@
 
 </body>
 </html>
+
 
 
 
