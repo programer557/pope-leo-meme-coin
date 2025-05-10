@@ -6,18 +6,6 @@
   <title>Pope Leo XIV Meme Coin</title>
   <style>
     body {
-      position: relative;
-    }
-    body::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 0;
-    }
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
@@ -27,6 +15,7 @@
       position: relative;
       overflow: hidden;
     }
+
     body::before {
       content: '';
       position: absolute;
@@ -34,23 +23,35 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('/mnt/data/a6cb4e4d-6b74-4a68-b2ab-ee9ae4c92cd2.png') center center no-repeat fixed;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg') center center no-repeat fixed;
       background-size: cover;
-      opacity: 0.2;
+      opacity: 0.15;
       z-index: 0;
     }
+
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 20%, rgba(0, 0, 0, 0.8) 100%);
+      mix-blend-mode: screen;
+      z-index: 0;
+    }
+
     .content {
+      background-color: rgba(0, 0, 0, 0.75); /* Darker background for text */
       padding: 2rem;
-      animation: fadeIn 1.5s ease;
+      margin: 2rem auto;
+      max-width: 900px;
+      border-radius: 1rem;
       position: relative;
       z-index: 1;
+      animation: fadeIn 1.5s ease;
     }
-    img {
-      max-width: 220px;
-      border-radius: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 10px rgba(255,215,0,0.5);
-    }
+
     .bio {
       max-width: 700px;
       margin: 0 auto 2rem;
@@ -58,6 +59,7 @@
       line-height: 1.7;
       color: #ffd700;
     }
+
     .cta-buttons a {
       display: inline-block;
       margin: 0.5rem;
@@ -70,37 +72,43 @@
       transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
       box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
     }
+
     .cta-buttons a:hover {
       background: linear-gradient(to right, #ffa500, #ffcc00);
       transform: scale(1.05);
       box-shadow: 0 0 16px rgba(255, 215, 0, 0.8);
     }
+
     h1, h2 {
       color: #ffd700;
       text-shadow: 0 0 10px #ffd700, 0 0 20px #ff8c00;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     @keyframes fall {
       0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
       100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
+
     .coin {
       position: absolute;
       width: 40px;
       height: 40px;
       background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Coin_icon_gold.svg/1024px-Coin_icon_gold.svg.png');
       background-size: cover;
-      background-repeat: no-repeat;
       animation: fall linear infinite;
       z-index: 0;
     }
-      @keyframes spark {
+
+    @keyframes spark {
       0% { transform: translateY(0) scale(1); opacity: 1; }
       100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
     }
+
     .spark {
       position: absolute;
       width: 6px;
@@ -111,11 +119,17 @@
       pointer-events: none;
       z-index: 1;
     }
-    body::after {
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 20%, rgba(0, 0, 0, 0.8) 100%);
-      mix-blend-mode: screen;
+
+    .pope-image-bottom {
+      display: block;
+      max-width: 300px;
+      margin: 2rem auto;
+      opacity: 0.8;
+      z-index: 1;
+      position: relative;
+      animation: fadeIn 2s ease-in-out;
     }
-</style>
+  </style>
 </head>
 <body>
   <script>
@@ -127,6 +141,7 @@
       coin.style.animationDelay = Math.random() * 5 + 's';
       document.body.appendChild(coin);
     }
+
     for (let i = 0; i < 60; i++) {
       const spark = document.createElement('div');
       spark.className = 'spark';
@@ -136,12 +151,11 @@
       spark.style.animationDelay = Math.random() * 4 + 's';
       document.body.appendChild(spark);
     }
-</script>
+  </script>
 
   <div class="content">
     <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">Official Meme Coin</h1>
     <h2 style="font-size: 2rem; margin-top: 0;">Pope Leo XIV</h2>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg" alt="Pope Leo XIV" />
 
     <div class="bio">
       <p><strong>Pope Leo XIV</strong> is the fictional leader of the crypto faithful, guiding meme coin believers through market volatility with wisdom and grace. Inspired by history, satire, and community spirit, this token brings humor and holiness to the blockchain.</p>
@@ -154,10 +168,12 @@
       <a href="#">Read the Whitepaper</a>
     </div>
   </div>
-  <div style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 0; pointer-events: none;">
-    <img src="/mnt/data/a6cb4e4d-6b74-4a68-b2ab-ee9ae4c92cd2.png" style="width: 100%; opacity: 0.3; object-fit: cover;" alt="Pope Leo XIV background" />
-  </div>
+
+  <!-- Pope Leo image at bottom -->
+  <img class="pope-image-bottom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg" alt="Pope Leo XIV" />
+
 </body>
 </html>
+
 
 
