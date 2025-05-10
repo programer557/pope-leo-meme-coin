@@ -89,30 +89,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Animation for the falling and rotating image */
-    @keyframes fallInCircle {
-      0% {
-        transform: translate(0, -100%) rotate(0deg);
-      }
-      50% {
-        transform: translate(50vw, 50vh) rotate(180deg);
-      }
-      100% {
-        transform: translate(0, 100vh) rotate(360deg);
-      }
-    }
-
-    .falling-image {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 150px; /* Medium size */
-      height: 150px;
-      transform: translateX(-50%); /* Center the image */
-      animation: fallInCircle 10s ease-in-out infinite; /* Slow fall with circular path */
-      z-index: 1;
-    }
-
     .countdown-container {
       position: fixed;
       top: 20%;
@@ -132,6 +108,37 @@
       font-weight: bold;
       color: #ffd700;
       text-shadow: 0 0 10px #ffd700, 0 0 20px #ff8c00;
+    }
+
+    .coin {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Coin_icon_gold.svg/1024px-Coin_icon_gold.svg.png');
+      background-size: cover;
+      animation: fall linear infinite;
+      z-index: 0;
+    }
+
+    .spark {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: radial-gradient(circle, #ffd700, #ffa500);
+      border-radius: 50%;
+      animation: spark linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .pope-image-bottom {
+      display: block;
+      max-width: 300px;
+      margin: 2rem auto;
+      opacity: 0.8;
+      z-index: 1;
+      position: relative;
+      animation: fadeIn 2s ease-in-out;
     }
 
     .qr-container {
@@ -158,6 +165,7 @@
       font-size: 1rem;
       font-weight: bold;
     }
+
   </style>
 </head>
 <body>
@@ -241,9 +249,6 @@
   </div>
 
   <img class="pope-image-bottom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg" alt="Pope Leo XIV" />
-
-  <!-- Falling Image -->
-  <img class="falling-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg" alt="Pope Leo XIV Falling" />
 </body>
 </html>
 
