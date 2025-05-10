@@ -13,27 +13,20 @@
       color: #fff;
       text-align: center;
       position: relative;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     body::before {
       content: '';
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg') bottom center no-repeat;
-      background-size: contain;
-      opacity: 0;
-      animation: fadeInImage 4s ease-in-out forwards;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg') center center no-repeat fixed;
+      background-size: cover;
+      opacity: 0.15;
       z-index: 0;
-      pointer-events: none;
-    }
-
-    @keyframes fadeInImage {
-      from { opacity: 0; }
-      to { opacity: 0.15; }
     }
 
     body::after {
@@ -49,7 +42,7 @@
     }
 
     .content {
-      background-color: rgba(0, 0, 0, 0.75);
+      background-color: rgba(0, 0, 0, 0.75); /* Darker background for text */
       padding: 2rem;
       margin: 2rem auto;
       max-width: 900px;
@@ -105,7 +98,83 @@
       position: absolute;
       width: 40px;
       height: 40px;
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Coin_icon_gold.svg/1024px-Coin_icon_gold.svg.png');
+      background-size: cover;
+      animation: fall linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes spark {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+    }
+
+    .spark {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: radial-gradient(circle, #ffd700, #ffa500);
+      border-radius: 50%;
+      animation: spark linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .pope-image-bottom {
+      display: block;
+      max-width: 300px;
+      margin: 2rem auto;
+      opacity: 0.8;
+      z-index: 1;
+      position: relative;
+      animation: fadeIn 2s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    for (let i = 0; i < 30; i++) {
+      const coin = document.createElement('div');
+      coin.className = 'coin';
+      coin.style.left = Math.random() * 100 + 'vw';
+      coin.style.animationDuration = (3 + Math.random() * 2) + 's';
+      coin.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(coin);
+    }
+
+    for (let i = 0; i < 60; i++) {
+      const spark = document.createElement('div');
+      spark.className = 'spark';
+      spark.style.left = Math.random() * 100 + 'vw';
+      spark.style.bottom = Math.random() * 50 + 'vh';
+      spark.style.animationDuration = (2 + Math.random() * 2) + 's';
+      spark.style.animationDelay = Math.random() * 4 + 's';
+      document.body.appendChild(spark);
+    }
+  </script>
+
+  <div class="content">
+    <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">Official Meme Coin</h1>
+    <h2 style="font-size: 2rem; margin-top: 0;">Pope Leo XIV</h2>
+
+    <div class="bio">
+      <p><strong>Pope Leo XIV</strong> is the fictional leader of the crypto faithful, guiding meme coin believers through market volatility with wisdom and grace. Inspired by history, satire, and community spirit, this token brings humor and holiness to the blockchain.</p>
+      <p>Join the congregation of holders. We're building a divine memetic economy—one holy transaction at a time.</p>
+    </div>
+
+    <div class="cta-buttons">
+      <a href="#">Buy Now</a>
+      <a href="#">Join the Community</a>
+      <a href="#">Read the Whitepaper</a>
+    </div>
+  </div>
+
+  <!-- Pope Leo image at bottom -->
+  <img class="pope-image-bottom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg" alt="Pope Leo XIV" />
+
+</body>
+</html>
+
 
 
 
