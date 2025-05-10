@@ -9,54 +9,63 @@
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background: url('https://www.transparenttextures.com/patterns/diagonal-stripes.png') repeat, #f6f6f6;
-      color: #333;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg') center center no-repeat fixed;
+      background-size: cover;
+      color: #fff;
       text-align: center;
       position: relative;
       overflow-x: hidden;
     }
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 0;
+    }
     header {
-      background: linear-gradient(135deg, #ffd700, #ff4500);
+      background: linear-gradient(90deg, #ffd700, #ffa500);
       padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       color: white;
-      border-bottom: 2px solid #ffa500;
+      position: relative;
+      z-index: 1;
     }
     h1 {
       margin: 0;
-      font-size: 4rem;
-      font-weight: 700;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+      font-size: 3rem;
+      text-shadow: 1px 1px 2px #000;
     }
     .tagline {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: #fff8e1;
-      margin-top: 10px;
     }
     .content {
-      padding: 4rem 2rem;
+      padding: 2rem;
       animation: fadeIn 1.5s ease;
       position: relative;
       z-index: 1;
     }
     img {
-      max-width: 240px;
-      border-radius: 50%;
+      max-width: 220px;
+      border-radius: 1rem;
       margin-bottom: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
     .bio {
       max-width: 700px;
       margin: 0 auto 2rem;
       font-size: 1.1rem;
-      line-height: 1.8;
-      color: #444;
-      text-align: center;
+      line-height: 1.7;
+      color: #fff;
     }
     .cta-buttons a {
       display: inline-block;
       margin: 0.5rem;
-      padding: 0.75rem 2rem;
+      padding: 0.75rem 1.5rem;
       background: linear-gradient(to right, #ffd700, #ffb800);
       color: #111;
       text-decoration: none;
@@ -73,9 +82,10 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fall {
-      0% { transform: translateY(-50px); opacity: 0.8; }
-      100% { transform: translateY(100vh); opacity: 0; }
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 0.6; }
+      50% { transform: translateY(-20px); opacity: 1; }
+      100% { transform: translateY(0); opacity: 0.6; }
     }
     .coin {
       position: absolute;
@@ -84,15 +94,15 @@
       background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Coin_icon_gold.svg/1024px-Coin_icon_gold.svg.png');
       background-size: contain;
       background-repeat: no-repeat;
-      animation: fall 4s infinite ease-in;
+      animation: float 3s ease-in-out infinite;
       z-index: 0;
-      opacity: 0.8;
+      opacity: 0.6;
     }
-    .coin:nth-child(1) { left: 10%; animation-delay: 0s; }
-    .coin:nth-child(2) { left: 30%; animation-delay: 1s; }
-    .coin:nth-child(3) { left: 50%; animation-delay: 2s; }
-    .coin:nth-child(4) { left: 70%; animation-delay: 1.5s; }
-    .coin:nth-child(5) { left: 90%; animation-delay: 0.5s; }
+    .coin:nth-child(1) { left: 5%; top: 100px; animation-delay: 0s; }
+    .coin:nth-child(2) { left: 15%; top: 200px; animation-delay: 1s; }
+    .coin:nth-child(3) { left: 25%; top: 150px; animation-delay: 2s; }
+    .coin:nth-child(4) { right: 10%; top: 120px; animation-delay: 1.5s; }
+    .coin:nth-child(5) { right: 20%; top: 180px; animation-delay: 0.5s; }
   </style>
 </head>
 <body>
@@ -103,8 +113,7 @@
   <div class="coin"></div>
 
   <header>
-    <h1>Pope Leo XIV Meme Coin</h1>
-    <p class="tagline">The most divine token on the blockchain</p>
+    
   </header>
 
   <div class="content">
@@ -123,4 +132,3 @@
   </div>
 </body>
 </html>
-
