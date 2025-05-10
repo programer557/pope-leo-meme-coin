@@ -14,7 +14,7 @@
       color: #fff;
       text-align: center;
       position: relative;
-      overflow-x: hidden;
+      overflow: hidden;
     }
     body::before {
       content: '';
@@ -25,23 +25,6 @@
       bottom: 0;
       background: rgba(0, 0, 0, 0.7);
       z-index: 0;
-    }
-    header {
-      background: linear-gradient(90deg, #ffd700, #ffa500);
-      padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      color: white;
-      position: relative;
-      z-index: 1;
-    }
-    h1 {
-      margin: 0;
-      font-size: 3rem;
-      text-shadow: 1px 1px 2px #000;
-    }
-    .tagline {
-      font-size: 1.3rem;
-      color: #fff8e1;
     }
     .content {
       padding: 2rem;
@@ -82,39 +65,33 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes float {
-      0% { transform: translateY(0); opacity: 0.6; }
-      50% { transform: translateY(-20px); opacity: 1; }
-      100% { transform: translateY(0); opacity: 0.6; }
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
     .coin {
       position: absolute;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Coin_icon_gold.svg/1024px-Coin_icon_gold.svg.png');
-      background-size: contain;
+      background-size: cover;
       background-repeat: no-repeat;
-      animation: float 3s ease-in-out infinite;
+      animation: fall linear infinite;
       z-index: 0;
-      opacity: 0.6;
     }
-    .coin:nth-child(1) { left: 5%; top: 100px; animation-delay: 0s; }
-    .coin:nth-child(2) { left: 15%; top: 200px; animation-delay: 1s; }
-    .coin:nth-child(3) { left: 25%; top: 150px; animation-delay: 2s; }
-    .coin:nth-child(4) { right: 10%; top: 120px; animation-delay: 1.5s; }
-    .coin:nth-child(5) { right: 20%; top: 180px; animation-delay: 0.5s; }
   </style>
 </head>
 <body>
-  <div class="coin"></div>
-  <div class="coin"></div>
-  <div class="coin"></div>
-  <div class="coin"></div>
-  <div class="coin"></div>
-
-  <header>
-    
-  </header>
+  <script>
+    for (let i = 0; i < 30; i++) {
+      const coin = document.createElement('div');
+      coin.className = 'coin';
+      coin.style.left = Math.random() * 100 + 'vw';
+      coin.style.animationDuration = (3 + Math.random() * 2) + 's';
+      coin.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(coin);
+    }
+  </script>
 
   <div class="content">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg" alt="Pope Leo XIV" />
@@ -132,3 +109,4 @@
   </div>
 </body>
 </html>
+
