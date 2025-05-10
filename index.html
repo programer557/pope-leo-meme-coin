@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -42,7 +42,7 @@
     }
 
     .content {
-      background-color: rgba(0, 0, 0, 0.75); /* Darker background for text */
+      background-color: rgba(0, 0, 0, 0.75);
       padding: 2rem;
       margin: 2rem auto;
       max-width: 900px;
@@ -89,9 +89,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes fall {
-      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    .countdown {
+      font-size: 2rem;
+      color: #ffd700;
+      margin-top: 1.5rem;
     }
 
     .coin {
@@ -102,11 +103,6 @@
       background-size: cover;
       animation: fall linear infinite;
       z-index: 0;
-    }
-
-    @keyframes spark {
-      0% { transform: translateY(0) scale(1); opacity: 1; }
-      100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
     }
 
     .spark {
@@ -128,20 +124,6 @@
       z-index: 1;
       position: relative;
       animation: fadeIn 2s ease-in-out;
-    }
-
-    /* Fade-in effect for the QR Code */
-    .qr-code {
-      animation: fadeIn 2s ease-in-out;
-      margin-top: 2rem;
-    }
-
-    .thank-you-message {
-      font-size: 1.2rem;
-      color: #ffd700;
-      font-weight: bold;
-      margin-top: 20px;
-      display: none; /* Hidden initially */
     }
   </style>
 </head>
@@ -166,12 +148,33 @@
       document.body.appendChild(spark);
     }
 
-    // Show the thank you message when a user clicks "Buy Now"
-    document.getElementById("buy-now").addEventListener("click", function () {
-      setTimeout(function () {
-        document.getElementById("thank-you").style.display = "block";
-      }, 1000); // Delay for effect
-    });
+    // Countdown Logic
+    const countdownElement = document.createElement('div');
+    countdownElement.className = 'countdown';
+    document.querySelector('.content').appendChild(countdownElement);
+
+    // Target date: May 11th at 6:00 AM EST
+    const targetDate = new Date('May 11, 2025 06:00:00 EST').getTime();
+
+    // Update the countdown every second
+    const countdownInterval = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      // Time calculations for days, hours, minutes, and seconds
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      // If the countdown is over
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        countdownElement.innerHTML = "The launch has arrived!";
+      }
+    }, 1000);
   </script>
 
   <div class="content">
@@ -184,38 +187,19 @@
     </div>
 
     <div class="cta-buttons">
-      <a 
-        id="buy-now"
-        href="solana:A7vVdkUuTfNW8AhKnkMqc58ipfUc2pdy5GFymvvdKdDA?label=Pope%20Leo%20XIV%20Meme%20Coin&message=Thank%20you%20for%20buying%20$POPE"
-        target="_blank"
-      >
-        Buy Now
-      </a>
+      <a href="#">Buy Now</a>
       <a href="#">Join the Community</a>
       <a href="#">Read the Whitepaper</a>
     </div>
 
-    <!-- QR Code with fade-in effect -->
-    <div class="qr-code">
-      <p style="color: #ffd700; font-weight: bold;">Scan to Buy with SOL:</p>
-      <img 
-        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=solana:A7vVdkUuTfNW8AhKnkMqc58ipfUc2pdy5GFymvvdKdDA%3Flabel%3DPope%2520Leo%2520XIV%2520Meme%2520Coin%26message%3DThank%2520you%2520for%2520buying%2520%24POPE" 
-        alt="Solana Wallet QR Code" 
-        style="border-radius: 0.5rem; box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);"
-      />
-    </div>
-
-    <!-- Thank You message -->
-    <div id="thank-you" class="thank-you-message">
-      Thank you for your purchase! Your support means a lot to the Pope Leo XIV Meme Coin community!
-    </div>
+    <!-- Countdown Timer -->
+    <div class="countdown"></div>
   </div>
 
-  <!-- Pope Leo image at bottom -->
   <img class="pope-image-bottom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg" alt="Pope Leo XIV" />
-
 </body>
 </html>
+
 
 
 
