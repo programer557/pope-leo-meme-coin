@@ -1,3 +1,4 @@
+<!-- 🪙 Pope Leo XIV Coin Launch Page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,46 +13,38 @@
       background: linear-gradient(135deg, #000000, #1a1a1a);
       color: #fff;
       text-align: center;
-      position: relative;
       overflow: hidden;
     }
-
     body::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg') center center no-repeat fixed;
       background-size: cover;
       opacity: 0.15;
       z-index: 0;
     }
-
     body::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 20%, rgba(0, 0, 0, 0.8) 100%);
       mix-blend-mode: screen;
       z-index: 0;
     }
-
     .content {
+      position: relative;
+      z-index: 1;
       background-color: rgba(0, 0, 0, 0.75);
       padding: 2rem;
       margin: 2rem auto;
       max-width: 900px;
       border-radius: 1rem;
-      position: relative;
-      z-index: 1;
-      animation: fadeIn 1.5s ease;
     }
-
+    h1, h2 {
+      color: #ffd700;
+      text-shadow: 0 0 10px #ffd700, 0 0 20px #ff8c00;
+    }
     .bio {
       max-width: 700px;
       margin: 0 auto 2rem;
@@ -59,36 +52,21 @@
       line-height: 1.7;
       color: #ffd700;
     }
-
     .cta-buttons a {
       display: inline-block;
       margin: 0.5rem;
       padding: 0.75rem 1.5rem;
       background: linear-gradient(to right, #ffd700, #ff8c00);
       color: #111;
-      text-decoration: none;
       font-weight: bold;
       border-radius: 0.75rem;
-      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
-      box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+      text-decoration: none;
+      transition: transform 0.3s;
     }
-
     .cta-buttons a:hover {
-      background: linear-gradient(to right, #ffa500, #ffcc00);
       transform: scale(1.05);
-      box-shadow: 0 0 16px rgba(255, 215, 0, 0.8);
+      background: linear-gradient(to right, #ffa500, #ffcc00);
     }
-
-    h1, h2 {
-      color: #ffd700;
-      text-shadow: 0 0 10px #ffd700, 0 0 20px #ff8c00;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     .countdown-container {
       position: fixed;
       top: 20%;
@@ -97,50 +75,33 @@
       padding: 1.5rem;
       border-radius: 1rem;
       box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-      color: #ffd700;
       font-size: 2rem;
-      z-index: 2;
-      text-align: center;
-    }
-
-    .countdown {
-      font-size: 2.5rem;
-      font-weight: bold;
       color: #ffd700;
-      text-shadow: 0 0 10px #ffd700, 0 0 20px #ff8c00;
+      z-index: 2;
     }
-
     .coin {
       position: absolute;
       width: 40px;
       height: 40px;
       background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Coin_icon_gold.svg/1024px-Coin_icon_gold.svg.png');
       background-size: cover;
-      animation: fall linear infinite;
-      z-index: 0;
-    }
-
-    .spark {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: radial-gradient(circle, #ffd700, #ffa500);
+      animation: fall 8s linear infinite;
       border-radius: 50%;
-      animation: spark linear infinite;
-      pointer-events: none;
-      z-index: 1;
     }
-
+    @keyframes fall {
+      0% { top: -50px; opacity: 0; }
+      10% { opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
     .pope-image-bottom {
       display: block;
-      max-width: 300px;
+      max-width: 200px;
       margin: 2rem auto;
-      opacity: 0.8;
+      opacity: 0.9;
       z-index: 1;
-      position: relative;
-      animation: fadeIn 2s ease-in-out;
+      border-radius: 50%;
+      animation: fall 20s linear infinite;
     }
-
     .qr-container {
       position: fixed;
       top: 50%;
@@ -153,102 +114,79 @@
       text-align: center;
       z-index: 2;
     }
-
     .qr-container img {
       width: 150px;
       height: 150px;
       margin-bottom: 1rem;
     }
-    
     .qr-container p {
       color: #ffd700;
       font-size: 1rem;
       font-weight: bold;
     }
-
   </style>
 </head>
 <body>
-  <script>
-    for (let i = 0; i < 30; i++) {
-      const coin = document.createElement('div');
-      coin.className = 'coin';
-      coin.style.left = Math.random() * 100 + 'vw';
-      coin.style.animationDuration = (3 + Math.random() * 2) + 's';
-      coin.style.animationDelay = Math.random() * 5 + 's';
-      document.body.appendChild(coin);
-    }
+  <div class="countdown-container">
+    <div id="countdown">Loading...</div>
+  </div>
 
-    for (let i = 0; i < 60; i++) {
-      const spark = document.createElement('div');
-      spark.className = 'spark';
-      spark.style.left = Math.random() * 100 + 'vw';
-      spark.style.bottom = Math.random() * 50 + 'vh';
-      spark.style.animationDuration = (2 + Math.random() * 2) + 's';
-      spark.style.animationDelay = Math.random() * 4 + 's';
-      document.body.appendChild(spark);
-    }
-
-    // Countdown Logic
-    const countdownContainer = document.createElement('div');
-    countdownContainer.className = 'countdown-container';
-    countdownContainer.innerHTML = '<div class="countdown">Loading...</div>';
-    document.body.appendChild(countdownContainer);
-
-    // Target date: May 11th at 6:00 AM EST
-    const targetDate = new Date('2025-05-11T06:00:00-05:00'); // Target date in EST (UTC-5)
-
-    // Function to update the countdown every second
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      // Time calculations for days, hours, minutes, and seconds
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownContainer.querySelector('.countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-      // If the countdown is over
-      if (distance < 0) {
-        clearInterval(countdownInterval);
-        countdownContainer.querySelector('.countdown').innerHTML = "The launch has arrived!";
-      }
-    }
-
-    // Update the countdown immediately and then every second
-    updateCountdown();
-    const countdownInterval = setInterval(updateCountdown, 1000);
-
-    // QR Code for the Solana wallet
-    const qrContainer = document.createElement('div');
-    qrContainer.className = 'qr-container';
-    qrContainer.innerHTML = `
-      <img src="https://api.qrserver.com/v1/create-qr-code/?data=solana:A7vVdkUuTfNW8AhKnkMqc58ipfUc2pdy5GFymvvdKdDA&size=150x150" alt="Solana Wallet QR Code" />
-      <p>Send Solana to this address</p>
-    `;
-    document.body.appendChild(qrContainer);
-  </script>
+  <div class="qr-container">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?data=solana:A7vVdkUuTfNW8AhKnkMqc58ipfUc2pdy5GFymvvdKdDA&size=150x150" alt="Solana Wallet QR Code" />
+    <p>Send Solana to:<br>A7vVdkUuTfNW8AhKnkMqc58ipfUc2pdy5GFymvvdKdDA</p>
+  </div>
 
   <div class="content">
-    <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">Official Meme Coin</h1>
-    <h2 style="font-size: 2rem; margin-top: 0;">Pope Leo XIV</h2>
-
+    <h1>Official Meme Coin</h1>
+    <h2>Pope Leo XIV</h2>
     <div class="bio">
-      <p><strong>Pope Leo XIV</strong> is the fictional leader of the crypto faithful, guiding meme coin believers through market volatility with wisdom and grace. Inspired by history, satire, and community spirit, this token brings humor and holiness to the blockchain.</p>
+      <p><strong>Pope Leo XIV</strong> is the fictional leader of the crypto faithful, guiding meme coin believers through market volatility with wisdom and grace.</p>
       <p>Join the congregation of holders. We're building a divine memetic economy—one holy transaction at a time.</p>
     </div>
-
     <div class="cta-buttons">
       <a href="#">Buy Now</a>
-      <a href="#">Join the Community</a>
-      <a href="#">Read the Whitepaper</a>
+      <a href="#">Join Community</a>
+      <a href="#">Whitepaper</a>
     </div>
   </div>
 
   <img class="pope-image-bottom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pope_Leo_XIV_Fictional.jpg/800px-Pope_Leo_XIV_Fictional.jpg" alt="Pope Leo XIV" />
+
+  <script>
+    // Falling coins
+    for (let i = 0; i < 30; i++) {
+      const coin = document.createElement('div');
+      coin.className = 'coin';
+      coin.style.left = Math.random() * 100 + 'vw';
+      coin.style.animationDuration = (5 + Math.random() * 5) + 's';
+      coin.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(coin);
+    }
+
+    // Countdown (respects local time)
+    const target = new Date(Date.UTC(2025, 4, 11, 11, 0, 0)); // May 11, 2025 at 6:00 AM EST (UTC+5 to UTC)
+    const countdownEl = document.getElementById('countdown');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        countdownEl.innerText = "🚀 The launch has arrived!";
+        return clearInterval(timer);
+      }
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      countdownEl.innerText = `${d}d ${h}h ${m}m ${s}s`;
+    }
+
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
 
